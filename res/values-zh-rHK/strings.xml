@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">黃金監測</string>
+
+    <string name="spot_prices">現貨價格</string>
+
+    <string name="gold_label">黃金</string>
+    <string name="silver_label">白銀</string>
+    <string name="performance_heading">漲跌表現</string>
+    <string name="dash">—</string>
+    <string name="unavailable">暫無數據</string>
+    <string name="footer_source">數據來源：goldprice.org · 美元／金衡盎司</string>
+
+    <string name="status_starting">正在啟動…</string>
+    <string name="status_live">即時數據</string>
+    <string name="status_cached">部分數據源不可用 — 顯示快取數據</string>
+    <string name="status_offline">離線 — 顯示上次儲存的數據</string>
+    <string name="updated_at">更新於 %1$s</string>
+    <string name="previous_close">昨收 %1$s</string>
+    <string name="live_price">即時 %1$s</string>
+
+    <string name="refresh">重新整理</string>
+    <string name="updating">正在更新…</string>
+    <string name="update_in_progress">已有更新正在進行中</string>
+    <string name="no_network">無網路連線</string>
+    <string name="update_failed">無法連線至 goldprice.org</string>
+
+    <string name="gold_chart_description">黃金價格走勢圖，過去 24 小時</string>
+    <string name="silver_chart_description">白銀價格走勢圖，過去 24 小時</string>
+    <string name="gold_chart_unavailable">無法載入黃金走勢圖</string>
+    <string name="silver_chart_unavailable">無法載入白銀走勢圖</string>
+
+    <string name="menu_refresh">立即重新整理</string>
+    <string name="menu_alerts">到價提醒…</string>
+    <string name="menu_interval">自動重新整理</string>
+    <string name="menu_int_off">關閉</string>
+    <string name="menu_int_10">每 10 秒</string>
+    <string name="menu_int_30">每 30 秒</string>
+    <string name="menu_int_60">每分鐘</string>
+    <string name="menu_int_300">每 5 分鐘</string>
+    <string name="menu_int_900">每 15 分鐘</string>
+    <string name="menu_flashes">價格變動閃爍…</string>
+    <string name="menu_about">關於</string>
+
+    <string name="alerts_title">到價提醒</string>
+    <string name="alert_enable_gold">黃金價格提醒</string>
+    <string name="alert_enable_silver">白銀價格提醒</string>
+    <string name="alert_target_hint">目標價格 (美元/盎司)</string>
+    <string name="alert_note">應用程式開啟期間，每次成功更新數據後均會檢查提醒。價格突破目標價時觸發一次通知，當價格回落並再次突破時會重新觸發。</string>
+    <string name="alert_invalid">請輸入大於零的價格</string>
+    <string name="alerts_saved">提醒設定已儲存</string>
+    <string name="save">儲存</string>
+    <string name="cancel">取消</string>
+    <string name="close">關閉</string>
+
+    <string name="about_title">關於 黃金監測</string>
+    <string name="about_message">提供來自 goldprice.org 的黃金與白銀現貨價格、24 小時走勢圖及漲跌表現數值。\n\n價格均以美元／金衡盎司計價。應用程式會在開啟時自動重新整理，並保留上次成功下載的數據，以便在離線時繼續查看。\n\n在 Android 4.0 系統上，本應用程式使用 Bouncy Castle 提供 TLS 1.2 連線支援，以彌補平台原生僅支援 TLS 1.0 的限制。</string>
+
+    <string name="auto_refresh_off">已關閉自動重新整理</string>
+    <string name="auto_refresh_set">已設定每 %1$d 秒自動重新整理</string>
+
+    <string name="flash_settings_title">價格變動閃爍</string>
+    <string name="flash_enable">數據更新時閃爍提示價格變化</string>
+    <string name="flash_threshold_hint">變動門檻 (美元/盎司)</string>
+    <string name="flash_threshold_note">當兩次更新之間的價格變動幅度達到或超過此門檻時，將會顯示閃爍提示。</string>
+    <string name="flash_saved">閃爍設定已儲存</string>
+    <string name="notification_channel">到價提醒</string>
+    <string name="notification_channel_description">當黃金或白銀價格達到目標價時傳送通知</string>
+
+</resources>
