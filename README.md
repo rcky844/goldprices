@@ -15,7 +15,7 @@ AndroidX, no AppCompat, no Gradle dependencies. The APK is assembled directly wi
 - Previous close and latest live quote
 - 24-hour gold and silver charts
 - Performance table (today, 30 days, 6 months, 1 year, 5 years, 20 years)
-- Automatic refresh while the screen is open (off / 30 s / 1 min / 5 min / 15 min)
+- Automatic refresh while the screen is open (off / 10 s / 30 s / 1 min / 5 min / 15 min)
 - Price alerts above or below a target, delivered as Android notifications
 - Last-good data cached on disk; works offline and after a restart
 - Holo Light UI that scales from small phones to tablets and rotates cleanly
@@ -161,7 +161,7 @@ spot download may trigger price alerts, so a stale quote cannot fire a notificat
 
 - Prices are quoted in **USD per troy ounce**.
 - Auto-refresh runs only while the activity is resumed; the menu lets the user turn
-  it off or choose 30 s / 1 min / 5 min / 15 min. The default is 1 minute.
+  it off or choose 10 s / 30 s / 1 min / 5 min / 15 min. The default is 1 minute.
 - Alerts fire once when the price crosses the target. They re-arm after the price
   moves back to the other side of the target.
 - The cache lives in `getFilesDir()/market-cache` and survives restarts.

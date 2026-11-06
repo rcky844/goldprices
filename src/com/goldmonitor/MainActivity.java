@@ -33,6 +33,7 @@ import com.goldmonitor.http.Http;
 
 public final class MainActivity extends Activity {
 
+    private static final long INTERVAL_10_SECONDS = 10000L;
     private static final long INTERVAL_30_SECONDS = 30000L;
     private static final long INTERVAL_1_MINUTE = 60000L;
     private static final long INTERVAL_5_MINUTES = 300000L;
@@ -363,6 +364,7 @@ public final class MainActivity extends Activity {
     public boolean onPrepareOptionsMenu(Menu menu) {
         long interval = prefs.getRefreshInterval();
         menu.findItem(R.id.menu_int_off).setChecked(interval == 0);
+        menu.findItem(R.id.menu_int_10).setChecked(interval == INTERVAL_10_SECONDS);
         menu.findItem(R.id.menu_int_30).setChecked(interval == INTERVAL_30_SECONDS);
         menu.findItem(R.id.menu_int_60).setChecked(interval == INTERVAL_1_MINUTE);
         menu.findItem(R.id.menu_int_300).setChecked(interval == INTERVAL_5_MINUTES);
@@ -383,6 +385,10 @@ public final class MainActivity extends Activity {
         }
         if (id == R.id.menu_about) {
             showAbout();
+            return true;
+        }
+        if (id == R.id.menu_int_10) {
+            setInterval(INTERVAL_10_SECONDS, item);
             return true;
         }
         if (id == R.id.menu_int_off) {

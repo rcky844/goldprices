@@ -19,6 +19,10 @@
                     android:checkable="true"
                     android:title="@string/menu_int_off" />
                 <item
+                    android:id="@+id/menu_int_10"
+                    android:checkable="true"
+                    android:title="@string/menu_int_10" />
+                <item
                     android:id="@+id/menu_int_30"
                     android:checkable="true"
                     android:title="@string/menu_int_30" />
