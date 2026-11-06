@@ -22,6 +22,22 @@ public final class Prefs {
         preferences.edit().putLong("refresh_ms", value).apply();
     }
 
+    public boolean isFlashEnabled() {
+        return preferences.getBoolean("flash_enabled", true);
+    }
+
+    public void setFlashEnabled(boolean value) {
+        preferences.edit().putBoolean("flash_enabled", value).apply();
+    }
+
+    public float getFlashThreshold() {
+        return preferences.getFloat("flash_threshold", 1.0f);
+    }
+
+    public void setFlashThreshold(float value) {
+        preferences.edit().putFloat("flash_threshold", value).apply();
+    }
+
     public long getLastFetch() {
         return preferences.getLong("last_fetch", 0L);
     }

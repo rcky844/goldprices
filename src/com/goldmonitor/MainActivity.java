@@ -50,6 +50,8 @@ public final class MainActivity extends Activity {
     private Prefs prefs;
     private Snapshot snapshot;
     private boolean resumed;
+    private double lastGoldPrice = Double.NaN;
+    private double lastSilverPrice = Double.NaN;
 
     private TextView statusText;
     private TextView updatedText;
@@ -254,6 +256,20 @@ public final class MainActivity extends Activity {
         goldPrice.setText(Format.price(gold));
         silverPrice.setText(Format.price(silver));
 
+        double flashThreshold = (double) prefs.getFlashThreshold();
+        if (prefs.isFlashEnabled()) {
+            if (!Double.isNaN(lastGoldPrice) && !Double.isNaN(gold)
+                    && Math.abs(gold - lastGoldPrice) >= flashThreshold) {
+                flashView(goldPrice, gold > lastGoldPrice ? R.color.up : R.color.down);
+            }
+            if (!Double.isNaN(lastSilverPrice) && !Double.isNaN(silver)
+                    && Math.abs(silver - lastSilverPrice) >= flashThreshold) {
+                flashView(silverPrice, silver > lastSilverPrice ? R.color.up : R.color.down);
+            }
+        }
+        lastGoldPrice = gold;
+        lastSilverPrice = silver;
+
         if (spot != null && !Double.isNaN(spot.goldChange)) {
             goldChange.setVisibility(View.VISIBLE);
             goldChange.setText(Format.signed(spot.goldChange) + "   " + Format.percent(spot.goldPercent));
@@ -341,6 +357,19 @@ public final class MainActivity extends Activity {
         }
     }
 
+    private void flashView(final View view, int colorRes) {
+        final int color = getResources().getColor(colorRes);
+        view.setBackgroundColor(color);
+        final Runnable reset = new Runnable() {
+            @Override
+            public void run() {
+                view.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+            }
+        };
+        handler.removeCallbacks(reset);
+        handler.postDelayed(reset, 900L);
+    }
+
     private int colorForAmount(String amount) {
         if (amount != null) {
             String trimmed = amount.trim();
@@ -381,6 +410,10 @@ public final class MainActivity extends Activity {
         }
         if (id == R.id.menu_alerts) {
             showAlertsDialog();
+            return true;
+        }
+        if (id == R.id.menu_flashes) {
+            showFlashDialog();
             return true;
         }
         if (id == R.id.menu_about) {
@@ -496,6 +529,48 @@ public final class MainActivity extends Activity {
         } catch (Exception e) {
             return -1d;
         }
+    }
+
+    private void showFlashDialog() {
+        View view = LayoutInflater.from(this).inflate(R.layout.dialog_flash, null);
+        final CheckBox enabledBox = (CheckBox) view.findViewById(R.id.flash_enabled);
+        final EditText thresholdField = (EditText) view.findViewById(R.id.flash_threshold_value);
+
+        enabledBox.setChecked(prefs.isFlashEnabled());
+        thresholdField.setText(Format.plain((double) prefs.getFlashThreshold()));
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(R.string.flash_settings_title);
+        builder.setView(view);
+        builder.setPositiveButton(R.string.save, null);
+        builder.setNegativeButton(R.string.cancel, null);
+        final AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface ignored) {
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(
+                        new View.OnClickListener() {
+                            @Override
+                            public void onClick(View ignoredView) {
+                                float threshold = prefs.getFlashThreshold();
+                                if (enabledBox.isChecked()) {
+                                    double parsed = parsePrice(thresholdField);
+                                    if (parsed <= 0d) {
+                                        thresholdField.setError(getString(R.string.alert_invalid));
+                                        return;
+                                    }
+                                    threshold = (float) parsed;
+                                }
+                                prefs.setFlashEnabled(enabledBox.isChecked());
+                                prefs.setFlashThreshold(threshold);
+                                dialog.dismiss();
+                                Toast.makeText(MainActivity.this, R.string.flash_saved,
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
+        dialog.show();
     }
 
     private void showAbout() {

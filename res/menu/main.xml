@@ -10,6 +10,10 @@
         android:title="@string/menu_alerts" />
 
     <item
+        android:id="@+id/menu_flashes"
+        android:title="@string/menu_flashes" />
+
+    <item
         android:id="@+id/menu_interval"
         android:title="@string/menu_interval">
         <menu>
