@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gold_label"
+            android:textColor="@color/gold"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/alert_gold_enabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_enable_gold" />
+
+        <EditText
+            android:id="@+id/alert_gold_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="@string/alert_target_hint"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+
+        <Spinner
+            android:id="@+id/alert_gold_direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/alert_directions" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="14dp"
+            android:background="@color/divider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/silver_label"
+            android:textColor="@color/silver"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <CheckBox
+            android:id="@+id/alert_silver_enabled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alert_enable_silver" />
+
+        <EditText
+            android:id="@+id/alert_silver_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="@string/alert_target_hint"
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
+
+        <Spinner
+            android:id="@+id/alert_silver_direction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:entries="@array/alert_directions" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/alert_note"
+            android:textColor="@color/text_secondary"
+            android:textSize="11sp" />
+    </LinearLayout>
+</ScrollView>

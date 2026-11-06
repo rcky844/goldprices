@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="alert_directions">
+        <item>At or above</item>
+        <item>At or below</item>
+    </string-array>
+</resources>

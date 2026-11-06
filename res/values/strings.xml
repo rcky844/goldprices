@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Gold Monitor</string>
+
+    <string name="spot_prices">Spot prices</string>
+
+    <string name="gold_label">GOLD</string>
+    <string name="silver_label">SILVER</string>
+    <string name="performance_heading">PERFORMANCE</string>
+    <string name="dash">—</string>
+    <string name="unavailable">Not available</string>
+    <string name="footer_source">Data from goldprice.org · USD per troy ounce</string>
+
+    <string name="status_starting">Starting…</string>
+    <string name="status_live">Live data</string>
+    <string name="status_cached">Some sources unavailable — showing cached data</string>
+    <string name="status_offline">Offline — showing the last saved data</string>
+    <string name="updated_at">Updated %1$s</string>
+    <string name="previous_close">Prev close %1$s</string>
+    <string name="live_price">Live %1$s</string>
+
+    <string name="refresh">Refresh</string>
+    <string name="updating">Updating…</string>
+    <string name="update_in_progress">An update is already running</string>
+    <string name="no_network">No network connection</string>
+    <string name="update_failed">Could not reach goldprice.org</string>
+
+    <string name="gold_chart_description">Gold price chart, last 24 hours</string>
+    <string name="silver_chart_description">Silver price chart, last 24 hours</string>
+    <string name="gold_chart_unavailable">Gold chart unavailable</string>
+    <string name="silver_chart_unavailable">Silver chart unavailable</string>
+
+    <string name="menu_refresh">Refresh now</string>
+    <string name="menu_alerts">Price alerts…</string>
+    <string name="menu_interval">Auto refresh</string>
+    <string name="menu_int_off">Off</string>
+    <string name="menu_int_30">Every 30 seconds</string>
+    <string name="menu_int_60">Every minute</string>
+    <string name="menu_int_300">Every 5 minutes</string>
+    <string name="menu_int_900">Every 15 minutes</string>
+    <string name="menu_about">About</string>
+
+    <string name="alerts_title">Price alerts</string>
+    <string name="alert_enable_gold">Notify me about gold</string>
+    <string name="alert_enable_silver">Notify me about silver</string>
+    <string name="alert_target_hint">Target price (USD/oz)</string>
+    <string name="alert_note">Alerts are checked after each successful update while the app is open. An alert fires once per crossing and re-arms when the price moves back.</string>
+    <string name="alert_invalid">Enter a price greater than zero</string>
+    <string name="alerts_saved">Alerts saved</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="close">Close</string>
+
+    <string name="about_title">About Gold Monitor</string>
+    <string name="about_message">Gold and silver spot prices, 24-hour charts and performance figures from goldprice.org.\n\nPrices are quoted in US dollars per troy ounce. The app refreshes while it is open and keeps the last successful download so values remain visible offline.\n\nOn Android 4.0 the connection uses TLS 1.2 from Bouncy Castle, because the platform itself only supports TLS 1.0.</string>
+
+    <string name="auto_refresh_off">Auto refresh turned off</string>
+    <string name="auto_refresh_set">Auto refresh every %1$d seconds</string>
+
+    <string name="notification_channel">Price alerts</string>
+    <string name="notification_channel_description">Notifications when gold or silver crosses a target price</string>
+
+</resources>

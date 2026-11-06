@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menu_refresh"
+        android:title="@string/menu_refresh" />
+
+    <item
+        android:id="@+id/menu_alerts"
+        android:title="@string/menu_alerts" />
+
+    <item
+        android:id="@+id/menu_interval"
+        android:title="@string/menu_interval">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/menu_int_off"
+                    android:checkable="true"
+                    android:title="@string/menu_int_off" />
+                <item
+                    android:id="@+id/menu_int_30"
+                    android:checkable="true"
+                    android:title="@string/menu_int_30" />
+                <item
+                    android:id="@+id/menu_int_60"
+                    android:checkable="true"
+                    android:title="@string/menu_int_60" />
+                <item
+                    android:id="@+id/menu_int_300"
+                    android:checkable="true"
+                    android:title="@string/menu_int_300" />
+                <item
+                    android:id="@+id/menu_int_900"
+                    android:checkable="true"
+                    android:title="@string/menu_int_900" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/menu_about"
+        android:title="@string/menu_about" />
+</menu>
