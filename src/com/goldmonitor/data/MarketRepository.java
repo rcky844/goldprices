@@ -33,6 +33,7 @@ public final class MarketRepository {
 
     private static final AtomicBoolean REFRESHING = new AtomicBoolean(false);
     private static volatile Snapshot latest;
+    private static volatile long lastChartUpdateMs;
 
     private MarketRepository() {
     }
@@ -76,10 +77,20 @@ public final class MarketRepository {
                     URL_GOLD_PERFORMANCE, PERFORMANCE_PARSER);
             snapshot.silverPerformance = loadValue(context, fetcher, "silver-performance.json",
                     URL_SILVER_PERFORMANCE, PERFORMANCE_PARSER);
-            snapshot.goldChart = loadValue(context, fetcher, "gold-chart.png", URL_GOLD_CHART,
-                    IMAGE_PARSER);
-            snapshot.silverChart = loadValue(context, fetcher, "silver-chart.png", URL_SILVER_CHART,
-                    IMAGE_PARSER);
+            Prefs prefsForCharts = new Prefs(context);
+            boolean tenSecondRefresh = prefsForCharts.getRefreshInterval() == 10000L;
+            boolean chartsDue = !tenSecondRefresh
+                    || System.currentTimeMillis() - lastChartUpdateMs >= 30000L;
+            if (chartsDue) {
+                lastChartUpdateMs = System.currentTimeMillis();
+                snapshot.goldChart = loadValue(context, fetcher, "gold-chart.png", URL_GOLD_CHART,
+                        IMAGE_PARSER);
+                snapshot.silverChart = loadValue(context, fetcher, "silver-chart.png",
+                        URL_SILVER_CHART, IMAGE_PARSER);
+            } else {
+                snapshot.goldChart = IMAGE_PARSER.parse(Cache.read(context, "gold-chart.png"));
+                snapshot.silverChart = IMAGE_PARSER.parse(Cache.read(context, "silver-chart.png"));
+            }
 
             snapshot.failedSources = fetcher.failures;
             snapshot.firstError = fetcher.firstError;
